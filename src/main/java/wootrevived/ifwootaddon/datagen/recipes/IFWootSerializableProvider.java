@@ -41,7 +41,7 @@ public class IFWootSerializableProvider extends TitaniumSerializableProvider {
                         new Ingredient.ItemValue(new ItemStack(UpgradeItemsRegistry.UPGRADE_BASE_ITEM.get())),
                         new Ingredient.TagValue(IndustrialTags.Items.MACHINE_FRAME_ADVANCED),
                         new Ingredient.ItemValue(new ItemStack(UpgradeItemsRegistry.UPGRADE_BASE_ITEM.get())),
-                        new Ingredient.ItemValue(new ItemStack(ModuleResourceProduction.ORE_LASER_BASE.getKey().get())),
+                        new Ingredient.ItemValue(new ItemStack(ModuleResourceProduction.FLUID_LASER_BASE.getKey().get())),
                         new Ingredient.ItemValue(new ItemStack(ModuleResourceProduction.FLUID_LASER_BASE.getKey().get())),
                         new Ingredient.TagValue(IndustrialTags.Items.GEAR_DIAMOND),
                         new Ingredient.ItemValue(new ItemStack(ModuleResourceProduction.LASER_DRILL.getKey().get())),
