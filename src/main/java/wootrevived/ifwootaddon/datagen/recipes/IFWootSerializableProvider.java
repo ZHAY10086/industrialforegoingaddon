@@ -96,105 +96,105 @@ public class IFWootSerializableProvider extends TitaniumSerializableProvider {
         LaserDrillOreRecipe.RECIPES.forEach(dissolutionChamberRecipe -> serializables.put(dissolutionChamberRecipe, dissolutionChamberRecipe));
 
         new LaserDrillFluidRecipe(
-                "warden",
+                "warden_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 30000).writeToNBT(new CompoundTag()),
                 10,
                 new ResourceLocation("minecraft", "warden"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
-                "wither",
+                "wither_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 20000).writeToNBT(new CompoundTag()),
                 10,
                 new ResourceLocation("minecraft", "wither"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
-                "ender_dragon",
+                "ender_dragon_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 10000).writeToNBT(new CompoundTag()),
                 10,
                 new ResourceLocation("minecraft", "ender_dragon"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
-                "wither_skeleton",
+                "wither_skeleton_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 5000).writeToNBT(new CompoundTag()),
                 10,
                 new ResourceLocation("minecraft", "wither_skeleton"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
-                "ghast",
+                "ghast_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 5000).writeToNBT(new CompoundTag()),
                 10,
                 new ResourceLocation("minecraft", "ghast"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
-                "enderman",
+                "enderman_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 5000).writeToNBT(new CompoundTag()),
                 10,
                 new ResourceLocation("minecraft", "enderman"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
-                "blaze",
+                "blaze_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 2000).writeToNBT(new CompoundTag()),
                 10,
                 new ResourceLocation("minecraft", "blaze"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
-                "zombie",
+                "zombie_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 1000).writeToNBT(new CompoundTag()),
                 10,
                 new ResourceLocation("minecraft", "zombie"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
-                "skeleton",
+                "skeleton_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 1000).writeToNBT(new CompoundTag()),
                 10,
                 new ResourceLocation("minecraft", "skeleton"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
-                "creeper",
+                "creeper_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 1000).writeToNBT(new CompoundTag()),
                 10,
                 new ResourceLocation("minecraft", "creeper"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
-                "spider",
+                "spider_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 1000).writeToNBT(new CompoundTag()),
                 10,
                 new ResourceLocation("minecraft", "spider"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
-                "cow",
+                "cow_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 500).writeToNBT(new CompoundTag()),
                 10,
                 new ResourceLocation("minecraft", "cow"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
-                "sheep",
+                "sheep_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 500).writeToNBT(new CompoundTag()),
                 10,
                 new ResourceLocation("minecraft", "sheep"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
-                "chicken",
+                "chicken_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 500).writeToNBT(new CompoundTag()),
                 10,
                 new ResourceLocation("minecraft", "chicken"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
-                "pig",
+                "pig_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 500).writeToNBT(new CompoundTag()),
                 10,
                 new ResourceLocation("minecraft", "pig"),
