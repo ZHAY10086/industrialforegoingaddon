@@ -3,81 +3,79 @@ plugins {
     id 'idea'
     id 'maven-publish'
 
-    id 'com.github.johnrengelman.shadow' version '7.1.2'
-    id 'com.matthewprenger.cursegradle' version '1.4.0'
-    id 'com.modrinth.minotaur' version "2.+"
+    id "me.shedaniel.unified-publishing" version "0.1.+"
 
-    id 'net.neoforged.gradle' version '6.0.21'
-    id 'org.spongepowered.mixin' version '0.7.+'
+    id "net.neoforged.moddev.legacyforge" version "2.0.115"
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of("${java_version}")
+java.toolchain.languageVersion = JavaLanguageVersion.of(java_version.toInteger())
 java.withSourcesJar()
 
 sourceSets.main.resources.srcDirs += "src/main/generated"
 
 group = 'wootrevived'
-archivesBaseName = "ifwootaddon"
 def buildVersion = "${mod_version}"
 version = "${mc_version}-${buildVersion}"
 
-minecraft {
-    mappings channel: 'official', version: "${mc_version}"
+base {
+    archivesName = "ifwootaddon"
+}
+
+legacyForge {
+    enable { neoForgeVersion = "${mc_version}-${neo_version}" }
 
     runs {
         configureEach {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-
-            mods {
-                "${mod_id}" {
-                    source sourceSets.main
-                }
-            }
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.DEBUG
         }
 
         client {
-            property 'forge.enabledGameTestNamespaces', mod_id
-        }
+            client()
 
-        server {
-            property 'forge.enabledGameTestNamespaces', mod_id
-            args '--nogui'
-        }
-
-        gameTestServer {
-            property 'forge.enabledGameTestNamespaces', mod_id
+            gameDirectory = file('runs/client')
         }
 
         data {
-            workingDirectory project.file('run-data')
+            data()
 
-            args '--mod', mod_id, '--all', '--output', file('src/main/generated/'), '--existing', file('src/main/resources/')
+            gameDirectory = file('runs/data')
+
+            programArguments.addAll '--mod', mod_id, '--all', '--output', file('src/main/generated/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+        }
+
+        server {
+            server()
+
+            gameDirectory = file('runs/server')
+
+            programArgument '--nogui'
+        }
+    }
+
+    mods {
+        ifwootaddon {
+            sourceSet sourceSets.main
         }
     }
 }
 
-processResources {
-    filesMatching('META-INF/mods.toml') {
-        expand 'file': [
-                        'modId': mod_id,
-                        'modName': mod_name,
-                        'jarVersion': mod_version
-                ],
-                'mc_version': mc_version,
-                'neo_version': neo_version,
-                'woot_version': woot_version,
-                'if_version': if_version,
-                'neo_major_version': neo_version.split('\\.')[0]
-    }
-}
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            mod_id            : mod_id,
+            mod_name          : mod_name,
+            mod_version       : mod_version,
+            mc_version        : mc_version,
+            neo_version       : neo_version,
+            woot_version      : woot_version,
+            if_version        : if_version,
+            neo_major_version : neo_version.split('\\.')[0]
+    ]
+    inputs.properties replaceProperties
 
-configurations {
-    annotationProcessor.extendsFrom minecraft
-    shadowIn
-    implementation.extendsFrom shadowIn
+    filesMatching(['META-INF/mods.toml']) {
+        expand replaceProperties
+    }
 }
 
 repositories {
@@ -91,35 +89,31 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.neoforged:forge:${mc_version}-${neo_version}"
-
     compileOnly 'org.jetbrains:annotations:22.0.0'
 
     // JEI
-    compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
-    compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
-    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
+    modCompileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
+    modCompileOnly "mezz.jei:jei-${mc_version}-forge-api:${jei_version}"
+    modRuntimeOnly "mezz.jei:jei-${mc_version}-forge:${jei_version}"
 
     // Jade
-    implementation fg.deobf("maven.modrinth:jade:${jade_version}")
+    modImplementation "maven.modrinth:jade:${jade_version}"
 
     // Woot
-    implementation fg.deobf("maven.modrinth:woot-revived:${mc_version}-${woot_version}")
-    runtimeOnly fg.deobf("maven.modrinth:guideme:${guideme_version}")
+    modImplementation "maven.modrinth:woot-revived:${mc_version}-${woot_version}"
+    modRuntimeOnly "maven.modrinth:guideme:${guideme_version}"
 
     // Industrial Foregoing
-    implementation fg.deobf("maven.modrinth:industrial-foregoing:${if_version}")
-    implementation fg.deobf("maven.modrinth:titanium:${titanium_version}")
+    modImplementation "maven.modrinth:industrial-foregoing:${if_version}"
+    modImplementation "maven.modrinth:titanium:${titanium_version}"
 
     // Optimizations
-    runtimeOnly fg.deobf("org.embeddedt:embeddium-${mc_version}:${embeddium_version}")
-    runtimeOnly fg.deobf("maven.modrinth:modernfix:${modernfix_version}")
-    runtimeOnly fg.deobf("maven.modrinth:ferrite-core:${ferritecore_version}")
+    modRuntimeOnly "maven.modrinth:ferrite-core:${ferritecore_version}"
 }
 
-shadowJar {
-    finalizedBy 'reobfShadowJar'
-    archiveClassifier = ''
+jar {
+    exclude '.cache/**'
+
     manifest {
         attributes([
                 'Specification-Title'     : "${mod_name}",
@@ -130,31 +124,6 @@ shadowJar {
                 'Implementation-Version'  : "${mod_version}",
                 'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
-    }
-    configurations = [project.configurations.shadowIn]
-
-    doFirst {
-        exclude '.cache/**'
-    }
-}
-
-reobf {
-    shadowJar {}
-    jar { enabled = false }
-}
-
-jar.enabled = false
-
-publishing {
-    publications {
-        register('mavenJava', MavenPublication) {
-            artifact jar
-        }
-    }
-    repositories {
-        maven {
-            url "file://${project.projectDir}/mcmodsrepo"
-        }
     }
 }
 
