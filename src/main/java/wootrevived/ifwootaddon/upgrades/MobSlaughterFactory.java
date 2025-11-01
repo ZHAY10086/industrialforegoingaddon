@@ -1,6 +1,7 @@
 package wootrevived.ifwootaddon.upgrades;
 
 import com.buuz135.industrial.module.ModuleCore;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.item.Item;
@@ -19,7 +20,7 @@ public class MobSlaughterFactory extends WootUpgradeItem {
     public MobSlaughterFactory(int level) { super(new Properties(), level); }
 
     @Override
-    public void modifyDrops(WootDropsProperties properties) {
+    public void modifyDrops(WootDropsProperties properties, CompoundTag upgradeTag) {
         List<FluidStack> fluids = properties.getFluidDrops();
 
         LivingEntity entity = properties.getEntity();

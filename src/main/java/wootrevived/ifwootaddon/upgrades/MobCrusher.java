@@ -1,6 +1,7 @@
 package wootrevived.ifwootaddon.upgrades;
 
 import com.buuz135.industrial.module.ModuleCore;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.DeferredRegister;
@@ -17,7 +18,7 @@ public class MobCrusher extends WootUpgradeItem {
     public MobCrusher(int level) { super(new Properties(), level); }
 
     @Override
-    public void modifyDrops(WootDropsProperties properties) {
+    public void modifyDrops(WootDropsProperties properties, CompoundTag upgradeTag) {
         int experience = properties.getExperience() * 20;
         if(experience <= 0)
             return;

@@ -3,6 +3,7 @@ package wootrevived.ifwootaddon.upgrades;
 import com.buuz135.industrial.module.ModuleCore;
 import com.buuz135.industrial.recipe.LaserDrillFluidRecipe;
 import com.hrznstudio.titanium.util.RecipeUtil;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.DeferredRegister;
@@ -20,7 +21,7 @@ public class LaserDrill extends WootUpgradeItem {
 
     @Override
     @SuppressWarnings("unchecked")
-    public void modifyDrops(WootDropsProperties properties) {
+    public void modifyDrops(WootDropsProperties properties, CompoundTag upgradeTag) {
         List<FluidStack> fluids = properties.getFluidDrops();
 
         List<LaserDrillFluidRecipe> fluidRecipes = (List<LaserDrillFluidRecipe>) RecipeUtil.getRecipes(properties.getLevel(), ModuleCore.LASER_DRILL_FLUID_TYPE.get());
