@@ -1,6 +1,7 @@
 package wootrevived.ifwootaddon.datagen.recipes;
 
 import com.buuz135.industrial.module.ModuleAgricultureHusbandry;
+import com.buuz135.industrial.module.ModuleCore;
 import com.buuz135.industrial.module.ModuleResourceProduction;
 import com.buuz135.industrial.recipe.DissolutionChamberRecipe;
 import com.buuz135.industrial.recipe.LaserDrillFluidRecipe;
@@ -17,8 +18,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.fluids.FluidStack;
 import wootrevived.ifwootaddon.IFWootAddon;
+import wootrevived.ifwootaddon.registries.IFItemsRegistry;
 import wootrevived.ifwootaddon.upgrades.LaserDrill;
 import wootrevived.ifwootaddon.upgrades.MobCrusher;
 import wootrevived.ifwootaddon.upgrades.MobSlaughterFactory;
@@ -86,6 +89,20 @@ public class IFWootSerializableProvider extends TitaniumSerializableProvider {
                 new ItemStack(MobSlaughterFactory.MOB_SLAUGHTER_FACTORY_ITEM.get()),
                 FluidStack.EMPTY
         );
+        new DissolutionChamberRecipe(
+                IFWootAddon.location(IFItemsRegistry.STYGIAN_LASER_LENS_TAG),
+                new Ingredient.Value[]{
+                        new Ingredient.TagValue(Tags.Items.GLASS_PANES),
+                        new Ingredient.TagValue(Tags.Items.GLASS_PANES),
+                        new Ingredient.TagValue(Tags.Items.GLASS_PANES),
+                        new Ingredient.TagValue(Tags.Items.GLASS_PANES),
+                        new Ingredient.ItemValue(new ItemStack(ItemsRegistry.STYGIAN_INGOT_ITEM.get()))
+                },
+                new FluidStack(ModuleCore.LATEX.getSourceFluid().get(), 250),
+                100,
+                new ItemStack(IFItemsRegistry.STYGIAN_LASER_LENS_ITEM.get()),
+                FluidStack.EMPTY
+        );
         DissolutionChamberRecipe.RECIPES.forEach(dissolutionChamberRecipe -> serializables.put(dissolutionChamberRecipe, dissolutionChamberRecipe));
 
         LaserDrillOreRecipe.createNether(
@@ -98,105 +115,105 @@ public class IFWootSerializableProvider extends TitaniumSerializableProvider {
         new LaserDrillFluidRecipe(
                 "warden_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 30000).writeToNBT(new CompoundTag()),
-                10,
+                Ingredient.of(IFItemsRegistry.STYGIAN_LASER_LENS_ITEM.get()),
                 new ResourceLocation("minecraft", "warden"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
                 "wither_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 20000).writeToNBT(new CompoundTag()),
-                10,
+                Ingredient.of(IFItemsRegistry.STYGIAN_LASER_LENS_ITEM.get()),
                 new ResourceLocation("minecraft", "wither"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
                 "ender_dragon_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 10000).writeToNBT(new CompoundTag()),
-                10,
+                Ingredient.of(IFItemsRegistry.STYGIAN_LASER_LENS_ITEM.get()),
                 new ResourceLocation("minecraft", "ender_dragon"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
                 "wither_skeleton_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 5000).writeToNBT(new CompoundTag()),
-                10,
+                Ingredient.of(IFItemsRegistry.STYGIAN_LASER_LENS_ITEM.get()),
                 new ResourceLocation("minecraft", "wither_skeleton"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
                 "ghast_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 5000).writeToNBT(new CompoundTag()),
-                10,
+                Ingredient.of(IFItemsRegistry.STYGIAN_LASER_LENS_ITEM.get()),
                 new ResourceLocation("minecraft", "ghast"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
                 "enderman_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 5000).writeToNBT(new CompoundTag()),
-                10,
+                Ingredient.of(IFItemsRegistry.STYGIAN_LASER_LENS_ITEM.get()),
                 new ResourceLocation("minecraft", "enderman"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
                 "blaze_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 2000).writeToNBT(new CompoundTag()),
-                10,
+                Ingredient.of(IFItemsRegistry.STYGIAN_LASER_LENS_ITEM.get()),
                 new ResourceLocation("minecraft", "blaze"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
                 "zombie_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 1000).writeToNBT(new CompoundTag()),
-                10,
+                Ingredient.of(IFItemsRegistry.STYGIAN_LASER_LENS_ITEM.get()),
                 new ResourceLocation("minecraft", "zombie"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
                 "skeleton_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 1000).writeToNBT(new CompoundTag()),
-                10,
+                Ingredient.of(IFItemsRegistry.STYGIAN_LASER_LENS_ITEM.get()),
                 new ResourceLocation("minecraft", "skeleton"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
                 "creeper_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 1000).writeToNBT(new CompoundTag()),
-                10,
+                Ingredient.of(IFItemsRegistry.STYGIAN_LASER_LENS_ITEM.get()),
                 new ResourceLocation("minecraft", "creeper"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
                 "spider_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 1000).writeToNBT(new CompoundTag()),
-                10,
+                Ingredient.of(IFItemsRegistry.STYGIAN_LASER_LENS_ITEM.get()),
                 new ResourceLocation("minecraft", "spider"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
                 "cow_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 500).writeToNBT(new CompoundTag()),
-                10,
+                Ingredient.of(IFItemsRegistry.STYGIAN_LASER_LENS_ITEM.get()),
                 new ResourceLocation("minecraft", "cow"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
                 "sheep_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 500).writeToNBT(new CompoundTag()),
-                10,
+                Ingredient.of(IFItemsRegistry.STYGIAN_LASER_LENS_ITEM.get()),
                 new ResourceLocation("minecraft", "sheep"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
                 "chicken_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 500).writeToNBT(new CompoundTag()),
-                10,
+                Ingredient.of(IFItemsRegistry.STYGIAN_LASER_LENS_ITEM.get()),
                 new ResourceLocation("minecraft", "chicken"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );
         new LaserDrillFluidRecipe(
                 "pig_mob_tears",
                 new FluidStack(FluidsRegistry.SOURCE_MOB_TEARS_FLUID.get(), 500).writeToNBT(new CompoundTag()),
-                10,
+                Ingredient.of(IFItemsRegistry.STYGIAN_LASER_LENS_ITEM.get()),
                 new ResourceLocation("minecraft", "pig"),
                 new LaserDrillRarity[]{new LaserDrillRarity(new ResourceKey[0], new ResourceKey[0], -64, 256, 8)}
         );

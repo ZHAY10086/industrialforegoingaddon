@@ -18,6 +18,7 @@ public class DataGenerators {
         PackOutput packOutput = generator.getPackOutput();
         if(event.includeServer()) {
             generator.addProvider(true, new IFWootSerializableProvider(generator));
+            generator.addProvider(true, new Recipes(packOutput));
         }
         if(event.includeClient()) {
             generator.addProvider(true, new Items(packOutput, existingFileHelper));

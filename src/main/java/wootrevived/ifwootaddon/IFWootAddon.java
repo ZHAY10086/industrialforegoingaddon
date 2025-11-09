@@ -1,11 +1,14 @@
 package wootrevived.ifwootaddon;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.jetbrains.annotations.NotNull;
 import wootrevived.api.IWootPlugin;
 import wootrevived.api.WootPlugin;
 import wootrevived.api.registrations.WootUpgradeItemRegistration;
+import wootrevived.ifwootaddon.registries.IFItemsRegistry;
 import wootrevived.ifwootaddon.upgrades.LaserDrill;
 import wootrevived.ifwootaddon.upgrades.MobCrusher;
 import wootrevived.ifwootaddon.upgrades.MobSlaughterFactory;
@@ -20,6 +23,8 @@ public class IFWootAddon implements IWootPlugin
 
     public IFWootAddon()
     {
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+        IFItemsRegistry.register(bus);
     }
 
     @Override
