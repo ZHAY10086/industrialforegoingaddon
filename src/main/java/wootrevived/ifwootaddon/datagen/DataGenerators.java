@@ -8,7 +8,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import wootrevived.ifwootaddon.IFWootAddon;
-import wootrevived.ifwootaddon.datagen.recipes.IFWootSerializableProvider;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -21,7 +20,7 @@ public class DataGenerators {
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         PackOutput packOutput = generator.getPackOutput();
         if(event.includeServer()) {
-            generator.addProvider(true, new IFWootSerializableProvider(packOutput, lookupProvider));
+            generator.addProvider(true, new Recipes(packOutput, lookupProvider));
         }
         if(event.includeClient()) {
             generator.addProvider(true, new Items(packOutput, existingFileHelper));

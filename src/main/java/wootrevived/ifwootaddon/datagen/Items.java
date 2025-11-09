@@ -11,6 +11,7 @@ import net.neoforged.neoforge.client.model.generators.loaders.DynamicFluidContai
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import wootrevived.ifwootaddon.IFWootAddon;
+import wootrevived.ifwootaddon.registries.IFItemsRegistry;
 import wootrevived.ifwootaddon.upgrades.LaserDrill;
 import wootrevived.ifwootaddon.upgrades.MobCrusher;
 import wootrevived.ifwootaddon.upgrades.MobSlaughterFactory;
@@ -27,6 +28,7 @@ public class Items extends ItemModelProvider {
         itemGenerated(MobCrusher.MOB_CRUSHER_ITEM);
         itemGenerated(MobSlaughterFactory.MOB_SLAUGHTER_FACTORY_ITEM);
         itemGenerated(LaserDrill.LASER_DRILL_ITEM);
+        itemGenerated(IFItemsRegistry.STYGIAN_LASER_LENS_ITEM);
     }
 
     public ResourceLocation getItemResource(Item item){

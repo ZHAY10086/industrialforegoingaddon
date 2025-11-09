@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "ifwootaddon",
+  "ingredients": [
+    {
+      "item": "ifwootaddon:stygian_laser_lens"
+    },
+    {
+      "tag": "c:dyes/red"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "industrialforegoing:red_laser_lens"
+  }
+}

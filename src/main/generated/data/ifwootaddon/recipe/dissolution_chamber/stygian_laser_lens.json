@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "ifwootaddon:stygian_laser_lens"
+    }
+  ],
+  "type": "industrialforegoing:dissolution_chamber",
+  "input": [
+    {
+      "tag": "c:glass_panes"
+    },
+    {
+      "tag": "c:glass_panes"
+    },
+    {
+      "tag": "c:glass_panes"
+    },
+    {
+      "tag": "c:glass_panes"
+    },
+    {
+      "item": "woot_revived:stygian_ingot"
+    }
+  ],
+  "inputFluid": {
+    "amount": 250,
+    "fluid": "industrialforegoing:latex"
+  },
+  "output": {
+    "count": 1,
+    "id": "ifwootaddon:stygian_laser_lens"
+  },
+  "processingTime": 100
+}

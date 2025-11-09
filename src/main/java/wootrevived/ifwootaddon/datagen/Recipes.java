@@ -1,0 +1,29 @@
+package wootrevived.ifwootaddon.datagen;
+
+import net.minecraft.advancements.Criterion;
+import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
+import wootrevived.ifwootaddon.datagen.recipes.IndustrialForegoing;
+import wootrevived.ifwootaddon.datagen.recipes.Vanilla;
+
+import java.util.concurrent.CompletableFuture;
+
+public class Recipes extends RecipeProvider {
+    public Recipes(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> provider) { super(packOutput, provider); }
+
+    @Override
+    protected void buildRecipes(RecipeOutput output) {
+        Vanilla.registerRecipes(this, output);
+        IndustrialForegoing.registerRecipes(output);
+    }
+
+    public Criterion<InventoryChangeTrigger.TriggerInstance> hasItem(ItemLike item) { return has(item); }
+
+    public Criterion<InventoryChangeTrigger.TriggerInstance> hasItem(TagKey<Item> item) { return has(item); }
+}
